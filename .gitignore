@@ -191,3 +191,5 @@ pid/*
 utils/*.json
 **/dist/*
 **/tsconfig.tsbuildinfo
+
+cache/*
