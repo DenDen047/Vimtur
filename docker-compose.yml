@@ -1,22 +1,20 @@
 version: '3'
 services:
-  vimtur:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    environment:
-      - CACHE_PATH=/cache/
-      - DATA_PATH=/data/
-      - USERNAME
-      - PASSWORD
-      - DATABASE
-      - DATABASE_URI
-      - DATABASE_DB
-    volumes:
-      - ${DATA_DIR}:/data/
-      - ${CACHE_DIR}:/cache/
+  primary:
+    image: simplyboo6/vimtur:latest
     ports:
-      - '${PORT}:3523'
+      - "3523:3523"
+    environment:
+      - DATA_PATH=/data/media
+      - CACHE_PATH=/data/cache
+      - DATABASE=mongodb
+      - DATABASE_URI=mongodb://mongo
+      - DATABASE_DB=vimtur
+      - PORT=3523
+    volumes:
+      - "${DATA_DIR}:/data/media"
+      - "${CACHE_DIR}:/data/cache"
+
   mongo:
     image: mongo
     volumes:
