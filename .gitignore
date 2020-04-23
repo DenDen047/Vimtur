@@ -192,4 +192,4 @@ utils/*.json
 **/dist/*
 **/tsconfig.tsbuildinfo
 
-cache/*
+cache/**
